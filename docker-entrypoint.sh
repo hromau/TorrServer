@@ -17,6 +17,6 @@ if [ ! -f $TS_LOG_PATH ]; then
   touch $TS_LOG_PATH
 fi
 
-echo "Running with: ${FLAGS}"
+echo "Running with: ${FLAGS}" &
 
-torrserver $FLAGS
+torrserver $FLAGS &
