@@ -5,7 +5,7 @@ WORKDIR /app
 # Build front once upon multiarch build
 RUN yarn install && yarn run build
 ### FRONT BUILD END ###
-EXPOSE 8090 22
+EXPOSE 80
 
 ### BUILD TORRSERVER MULTIARCH START ###
 FROM --platform=$BUILDPLATFORM golang:1.21.2-alpine as builder
