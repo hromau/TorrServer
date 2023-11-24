@@ -6,7 +6,7 @@ EXPOSE 8090
 # Build front once upon multiarch build
 RUN yarn install && yarn run build
 ### FRONT BUILD END ###
-
+RUN echo "front was built"
 
 ### BUILD TORRSERVER MULTIARCH START ###
 FROM --platform=$BUILDPLATFORM golang:1.21.2-alpine as builder
@@ -29,7 +29,7 @@ RUN apk add --update g++ \
 && go mod tidy \
 && go build -ldflags '-w -s' --o "torrserver" ./cmd 
 ### BUILD TORRSERVER MULTIARCH END ###
-
+RUN echo "BUILD TORRSERVER MULTIARCH END"
 
 ### UPX COMPRESSING START ###
 FROM debian:buster-slim as compressed
@@ -58,6 +58,6 @@ COPY --from=compressed ./torrserver /usr/bin/torrserver
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 
 RUN apk add --no-cache --update ffmpeg
-
+RUN echo "cmd command will be next"
 CMD /docker-entrypoint.sh
 ### BUILD MAIN IMAGE end ###
