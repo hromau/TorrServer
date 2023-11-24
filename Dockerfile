@@ -2,7 +2,7 @@
 FROM --platform=$BUILDPLATFORM node:16-alpine as front
 COPY ./web /app
 WORKDIR /app
-EXPOSE 80
+EXPOSE 8090
 # Build front once upon multiarch build
 RUN yarn install && yarn run build
 ### FRONT BUILD END ###
@@ -51,7 +51,7 @@ FROM alpine
 ENV TS_CONF_PATH="/opt/ts/config"
 ENV TS_LOG_PATH="/opt/ts/log"
 ENV TS_TORR_DIR="/opt/ts/torrents"
-ENV TS_PORT=80
+ENV TS_PORT=8090
 ENV GODEBUG=madvdontneed=1
 
 COPY --from=compressed ./torrserver /usr/bin/torrserver
