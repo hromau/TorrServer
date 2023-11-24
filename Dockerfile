@@ -2,10 +2,11 @@
 FROM --platform=$BUILDPLATFORM node:16-alpine as front
 COPY ./web /app
 WORKDIR /app
+EXPOSE 80
 # Build front once upon multiarch build
 RUN yarn install && yarn run build
 ### FRONT BUILD END ###
-EXPOSE 80
+
 
 ### BUILD TORRSERVER MULTIARCH START ###
 FROM --platform=$BUILDPLATFORM golang:1.21.2-alpine as builder
