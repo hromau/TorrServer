@@ -1,5 +1,5 @@
 #!/bin/sh
-
+echo "start Running"
 FLAGS="--path $TS_CONF_PATH --logpath $TS_LOG_PATH --port $TS_PORT --torrentsdir $TS_TORR_DIR"
 if [[ -n "$TS_HTTPAUTH" ]]; then FLAGS="${FLAGS} --httpauth"; fi
 if [[ -n "$TS_RDB" ]]; then FLAGS="${FLAGS} --rdb"; fi
