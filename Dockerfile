@@ -2,7 +2,8 @@
 FROM --platform=$BUILDPLATFORM node:16-alpine as front
 COPY ./web /app
 WORKDIR /app
-EXPOSE 8090 2222
+EXPOSE 8090
+ENV PORT 8090
 # Build front once upon multiarch build
 RUN yarn install && yarn run build
 ### FRONT BUILD END ###
